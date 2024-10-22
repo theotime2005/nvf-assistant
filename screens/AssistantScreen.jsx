@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import {chatSession} from "../gemini";
+import AssistantAnswer from "../components/AssistantAnswer";
 
 const initState = []; // Initialise avec un tableau vide
 
 export default function AssistantScreen({ navigation }) {
-    const [messages, setMessages] = useState(initState);
+    const [messages, setMessages] = useState([
+        {
+            type: "assistant",
+            text: "Bonjour, comment puis-je vous aider ?"
+        }
+    ]);
 
     const receiveMessage = async (message) => {
         // Mets à jour les messages en utilisant l'état précédent pour éviter les problèmes de mise à jour asynchrone
@@ -44,8 +50,7 @@ export default function AssistantScreen({ navigation }) {
                     )}
                     {message.type === "assistant" && (
                         <View>
-                            <Text>Assistant :</Text>
-                            <Text>{message.text}</Text>
+                            <AssistantAnswer answer={message.text}/>
                         </View>
                     )}
                 </View>
