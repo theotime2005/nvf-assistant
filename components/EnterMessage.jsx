@@ -4,7 +4,6 @@ import { View, TextInput, Button } from "react-native";
 export default function EnterMessage({onSendData}) {
     const [textMessage, setTextMessage] = useState("");
     const handleTextMessage = () => {
-        console.log(textMessage)
         onSendData({
             type: "user",
             text: textMessage
