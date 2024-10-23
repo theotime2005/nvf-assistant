@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from "react-native";
-import {CheckBox} from "react-native-web";
-import LinearGradient from "expo-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function StepScreen({navigation}) {
     const [animation] = React.useState(new Animated.Value(1));
@@ -25,7 +24,8 @@ export default function StepScreen({navigation}) {
             end={{x: 1, y: 1}}
             style={styles.container}
         >
-            <Text>Cette application est un prototype destiné a montrer l'inclusion d'un assistant pour des voyages. Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
+            <Text style={styles.pText}>Cette application est un prototype destiné a montrer l'inclusion d'un assistant pour des voyages. Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
+            <Text style={styles.subText}>Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
             <TouchableOpacity
              style={styles.button}
              onPress={handlePress}>
@@ -56,4 +56,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
+    pText: {
+        fontSize: 20,
+        textAlign: 'center',
+        marginBottom: 40,
+        color: '#FFF',
+    },
+
+    subText: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginBottom: 40,
+        color: '#FFF',
+    },
 })

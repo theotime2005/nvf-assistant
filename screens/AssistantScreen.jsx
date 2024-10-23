@@ -41,7 +41,12 @@ export default function AssistantScreen({navigation}) {
     };
 
     return (
-        <View>
+        <LinearGradient
+            colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            style={styles.container}
+        >
             <Text>Discutez avec votre assistant préféré</Text>
             {messages.map((message, index) => (
                 <View key={index}>
@@ -65,3 +70,13 @@ export default function AssistantScreen({navigation}) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
+
+})
