@@ -9,9 +9,9 @@ export default function AssistantAnswer({ answer }) {
             if (typeof answer !== 'string') return;
             // Sépare par lignes et nettoie en interprétant les listes et les paragraphes
             const lines = answer.split("\n").map(line => {
-                if (line.startsWith("**")) {
-                    // C'est une liste, retire les '**' et marque comme liste
-                    return { type: "list", content: line.replace(/\*\*/g, "").trim() };
+                console.log(line);
+                if (line.startsWith("* **")) {
+                    return { type: "list", content: line.split("*").join('')};
                 } else {
                     // C'est un paragraphe normal
                     return { type: "paragraph", content: line.trim() };
