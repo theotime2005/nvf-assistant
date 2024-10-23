@@ -33,3 +33,10 @@ const chatSession = model.startChat({
 })
 
 module.exports = {chatSession}
+
+// Test
+const main = async () => {
+    const result = await chatSession.sendMessage("Qui es-tu?");
+    console.log(result.response.text());
+}
+
