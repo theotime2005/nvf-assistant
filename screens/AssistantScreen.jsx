@@ -2,9 +2,8 @@ import React, {useState} from "react";
 import {ActivityIndicator, Text, Vibration, View} from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import {chatSession} from "../gemini";
+import { Audio } from 'expo-av';
 import AssistantAnswer from "../components/AssistantAnswer";
-
-const initState = []; // Initialise avec un tableau vide
 
 export default function AssistantScreen({navigation}) {
     const [messages, setMessages] = useState([
@@ -15,11 +14,18 @@ export default function AssistantScreen({navigation}) {
     ]);
     const [isLoading, setIsLoading] = useState(false);
 
+    async function playSound(loading) {
+        if (!loading) {
+            const {sound} = await Audio.Sound.createAsync(require("../assets/audio/end_response.wav"));
+            await sound.playAsync();
+        }
+    }
+
     const receiveMessage = async (message) => {
         setIsLoading(true);
         Vibration.vibrate([100, 100, 200]);
         // Mets à jour les messages en utilisant l'état précédent pour éviter les problèmes de mise à jour asynchrone
-        setMessages((prevMessages) => [...prevMessages, message]);
+        setMessages(prevMessages => [...prevMessages, message]);
         await sendToQuery(message.text);
         setIsLoading(false);
         Vibration.vibrate([200, 100, 100]);
@@ -29,18 +35,20 @@ export default function AssistantScreen({navigation}) {
         try {
             const result = await chatSession.sendMessage(message);
             const response = result.response.text();
-            setMessages((prefMessages) => [...prefMessages, {
+            await playSound(false);
+            setMessages(prevMessages => [...prevMessages, {
                 type: "assistant",
                 text: response
             }]);
         } catch (e) {
             console.error(e);
-            setMessages((prefMessages) => [...prefMessages, {
+            setMessages(prevMessages => [...prevMessages, {
                 type: "assistant",
                 text: "Je suis désolé, je n'ai pas pu comprendre votre message"
             }])
         }
     };
+
 
     return (
         <View>
