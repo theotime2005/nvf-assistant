@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 export default function AssistantAnswer({ answer }) {
     const [answerToDisplay, setAnswerToDisplay] = useState([]);
@@ -7,13 +7,10 @@ export default function AssistantAnswer({ answer }) {
     useEffect(() => {
         const cleanText = () => {
             if (typeof answer !== 'string') return;
-            // Sépare par lignes et nettoie en interprétant les listes et les paragraphes
             const lines = answer.split("\n").map(line => {
-                console.log(line);
                 if (line.startsWith("* **")) {
-                    return { type: "list", content: line.split("*").join('')};
+                    return { type: "list", content: line.split("*").join('').trim() };
                 } else {
-                    // C'est un paragraphe normal
                     return { type: "paragraph", content: line.trim() };
                 }
             });
@@ -24,16 +21,30 @@ export default function AssistantAnswer({ answer }) {
 
     return (
         <View>
-            <Text>Assistant :</Text>
             {answerToDisplay.map((line, index) => (
-                <View key={index} style={{ marginBottom: 10 }}>
+                <View key={index} style={styles.lineContainer}>
                     {line.type === "list" ? (
-                        <Text>• {line.content}</Text> // Affiche la liste avec un bullet point
+                        <Text style={styles.listItem}>• {line.content}</Text>
                     ) : (
-                        <Text>{line.content}</Text> // Affiche un paragraphe
+                        <Text style={styles.paragraph}>{line.content}</Text>
                     )}
                 </View>
             ))}
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    lineContainer: {
+        marginBottom: 5,
+    },
+    listItem: {
+        fontSize: 14,
+        color: '#333',
+        marginLeft: 10,
+    },
+    paragraph: {
+        fontSize: 14,
+        color: '#333',
+    },
+});
