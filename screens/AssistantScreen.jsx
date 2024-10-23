@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {ActivityIndicator, Text, View} from "react-native";
+import {ActivityIndicator, Text, View, StyleSheet} from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import {chatSession} from "../gemini";
 import AssistantAnswer from "../components/AssistantAnswer";
+import { LinearGradient } from "expo-linear-gradient";
 
 const initState = []; // Initialise avec un tableau vide
 
@@ -67,7 +68,7 @@ export default function AssistantScreen({navigation}) {
                 <ActivityIndicator style={{marginTop: 10}}/>
             )}
             <EnterMessage onSendData={receiveMessage}/>
-        </View>
+        </LinearGradient>
     );
 }
 
