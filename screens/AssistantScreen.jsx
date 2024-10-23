@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {ActivityIndicator, Text, View} from "react-native";
+import {ActivityIndicator, Text, Vibration, View} from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import {chatSession} from "../gemini";
 import AssistantAnswer from "../components/AssistantAnswer";
@@ -17,10 +17,12 @@ export default function AssistantScreen({navigation}) {
 
     const receiveMessage = async (message) => {
         setIsLoading(true);
+        Vibration.vibrate([100, 100, 200]);
         // Mets à jour les messages en utilisant l'état précédent pour éviter les problèmes de mise à jour asynchrone
         setMessages((prevMessages) => [...prevMessages, message]);
         await sendToQuery(message.text);
         setIsLoading(false);
+        Vibration.vibrate([200, 100, 100]);
     };
 
     const sendToQuery = async (message) => {
