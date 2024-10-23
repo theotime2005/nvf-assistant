@@ -8,7 +8,7 @@ import AssistantScreen from "./screens/AssistantScreen";
 const Stack = createNativeStackNavigator();
 export default function App() {
     return (
-        <NavigationContainer>
+        <NavigationContainer accessibilityLanguage="fr">
             <Stack.Navigator initialRouteName={"welcome"}>
                 <Stack.Screen name={"welcome"} component={WelcomeScreen} options={{
                     title: "Bienvenue"
