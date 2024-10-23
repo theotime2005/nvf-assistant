@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function WelcomeScreen({ navigation }) {
     const [animation] = React.useState(new Animated.Value(1));
@@ -17,22 +18,28 @@ export default function WelcomeScreen({ navigation }) {
     };
 
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            style={styles.container}
+        >
+            <Text style={styles.appName}>Nouvelles Frontières</Text>
             <Text style={styles.welcomeText}>
-                Bienvenue. Ceci est une application de démonstration.
+                Bienvenue dans votre assistant de voyage
             </Text>
             <Text style={styles.subText}>
-                Vous pouvez l'utiliser à des fins de test.
+                Découvrez de nouveaux horizons avec nous
             </Text>
             <Animated.View style={{ transform: [{ scale: animation }] }}>
                 <TouchableOpacity
                     style={styles.button}
                     onPress={handlePress}
                 >
-                    <Text style={styles.buttonText}>Continuer</Text>
+                    <Text style={styles.buttonText}>Commencer l'aventure</Text>
                 </TouchableOpacity>
             </Animated.View>
-        </View>
+        </LinearGradient>
     );
 };
 
@@ -43,27 +50,32 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
+    appName: {
+        fontSize: 32, 
+        fontWeight: '800', 
+        color: '#FFF',
+        marginBottom: 40,
+    },
     welcomeText: {
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
+        color: '#FFF',
     },
     subText: {
-        fontSize: 16,
+        fontSize: 18,
         textAlign: 'center',
         marginBottom: 40,
+        color: '#FFF',
     },
     button: {
-        backgroundColor: '#007AFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         paddingVertical: 12,
         paddingHorizontal: 30,
         borderRadius: 25,
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+        borderWidth: 2,
+        borderColor: '#FFF',
     },
     buttonText: {
         color: 'white',
