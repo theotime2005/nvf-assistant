@@ -58,7 +58,7 @@ export default function AssistantScreen({ navigation }) {
                 colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
                 style={styles.container}
             >
-                <Text style={styles.title}>Assistant Izzy</Text>
+                <Text style={styles.title}>Discutez avec Izzy ici</Text>
                 <ScrollView
                     style={styles.messagesContainer}
                     ref={scrollViewRef}
@@ -68,12 +68,12 @@ export default function AssistantScreen({ navigation }) {
                         <View key={index} style={message.type === "user" ? styles.userMessage : styles.assistantMessage}>
                             {message.type === "user" ? (
                                 <>
-                                    <Text style={styles.userPrefix}>Vous avez dit:</Text>
+                                    <Text style={styles.userPrefix}>Vous :</Text>
                                     <Text style={styles.messageText}>{message.text}</Text>
                                 </>
                             ) : (
                                 <>
-                                    <Text style={styles.assistantPrefix}>Izzy a dit :</Text>
+                                    <Text style={styles.assistantPrefix}>Izzy :</Text>
                                     <AssistantAnswer answer={message.text} />
                                 </>
                             )}

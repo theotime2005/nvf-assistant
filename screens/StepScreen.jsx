@@ -24,13 +24,13 @@ export default function StepScreen({navigation}) {
             end={{x: 1, y: 1}}
             style={styles.container}
         >
-            <Text style={styles.pText}>Cette application est un prototype destiné a montrer l'inclusion d'un assistant pour des voyages.</Text>
+            <Text style={styles.pText}>Cette application est un prototype destiné à montrer une première version de la solution IZZY</Text>
             <TouchableOpacity
              style={styles.button}
              onPress={handlePress}
              accessibilityRole={"button"}
             >
-                <Text style={styles.buttonText}>J'accepte et je poursuis</Text>
+                <Text style={styles.buttonText}>J'accède à l'interface</Text>
             </TouchableOpacity>
              </LinearGradient>
     )
