@@ -19,7 +19,7 @@ export default function WelcomeScreen({ navigation }) {
 
     return (
         <LinearGradient
-            colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
+            colors={['#516648', '#3C4B35', '#263122']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.container}

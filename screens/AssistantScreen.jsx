@@ -1,6 +1,6 @@
 import { Audio } from 'expo-av';
 import React, { useState, useRef } from "react";
-import { ActivityIndicator, Text, View, StyleSheet, ScrollView, SafeAreaView, Vibration, KeyboardAvoidingView, Platform } from "react-native";
+import { ActivityIndicator, Text, View, StyleSheet, ScrollView, SafeAreaView, Vibration, KeyboardAvoidingView, Platform, } from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import { chatSession } from "../gemini";
 import AssistantAnswer from "../components/AssistantAnswer";
@@ -10,7 +10,7 @@ export default function AssistantScreen({ navigation }) {
     const [messages, setMessages] = useState([
         {
             type: "assistant",
-            text: "Bonjour, je suis izzy l'assistant virtuel de nouvelles frontières comment puis-je t'aider ?"
+            text: "Bonjour, je suis izzy l'assistant virtuel de Nouvelles Frontières comment puis-je t'aider ?"
         }
     ]);
     const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function AssistantScreen({ navigation }) {
 
     const receiveMessage = async (message) => {
         setIsLoading(true);
-        Vibration.vibrate([100, 100, 200]);
+          Vibration.vibrate([100, 100, 200]);
         // Mets à jour les messages en utilisant l'état précédent pour éviter les problèmes de mise à jour asynchrone
         setMessages(prevMessages => [...prevMessages, message]);
         await sendToQuery(message.text);
@@ -59,7 +59,7 @@ export default function AssistantScreen({ navigation }) {
     keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
 >
             <LinearGradient
-                colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
+                colors={['#516648', '#3C4B35', '#263122']}
                 style={styles.container}
             >
                 <Text style={styles.title}>Discutez avec Izzy ici</Text>
