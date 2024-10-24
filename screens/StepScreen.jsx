@@ -24,8 +24,7 @@ export default function StepScreen({navigation}) {
             end={{x: 1, y: 1}}
             style={styles.container}
         >
-            <Text style={styles.pText}>Cette application est un prototype destiné a montrer l'inclusion d'un assistant pour des voyages. Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
-            <Text style={styles.subText}>Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
+            <Text style={styles.pText}>Cette application est un prototype destiné a montrer l'inclusion d'un assistant pour des voyages.</Text>
             <TouchableOpacity
              style={styles.button}
              onPress={handlePress}

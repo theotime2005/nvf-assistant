@@ -24,7 +24,7 @@ export default function WelcomeScreen({ navigation }) {
             end={{x: 1, y: 1}}
             style={styles.container}
         >
-            <Text style={styles.appName}>Nouvelles Frontières</Text>
+            <Text style={styles.appName}>Izzy</Text>
             <Text style={styles.welcomeText}>
                 Bienvenue dans votre assistant de voyage
             </Text>
