@@ -13,7 +13,7 @@ export default function AssistantAnswer({ answer }) {
                 } else {
                     return { type: "paragraph", content: line.trim() };
                 }
-            });
+            }).filter(line => line.content!=='');
             setAnswerToDisplay(lines);
         }
         cleanText();
