@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 export default function EnterMessage({ onSendData }) {
@@ -15,7 +15,11 @@ export default function EnterMessage({ onSendData }) {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={90}  // Ajustez cette valeur selon la hauteur de votre interface
+        >
             <TextInput
                 style={styles.input}
                 value={textMessage}
@@ -33,7 +37,7 @@ export default function EnterMessage({ onSendData }) {
             >
                 <Ionicons name="send" size={24} color={textMessage ? "#007AFF" : "#999"} />
             </TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
