@@ -1,6 +1,6 @@
 import { Audio } from 'expo-av';
 import React, { useState, useRef } from "react";
-import { ActivityIndicator, Text, View, StyleSheet, ScrollView, SafeAreaView, Vibration } from "react-native";
+import { ActivityIndicator, Text, View, StyleSheet, ScrollView, SafeAreaView, Vibration, KeyboardAvoidingView, Platform } from "react-native";
 import EnterMessage from "../components/EnterMessage";
 import { chatSession } from "../gemini";
 import AssistantAnswer from "../components/AssistantAnswer";
@@ -10,7 +10,7 @@ export default function AssistantScreen({ navigation }) {
     const [messages, setMessages] = useState([
         {
             type: "assistant",
-            text: "Bonjour, comment puis-je vous aider ?"
+            text: "Bonjour, je suis izzy l'assistant virtuel de nouvelles frontières comment puis-je t'aider ?"
         }
     ]);
     const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +53,11 @@ export default function AssistantScreen({ navigation }) {
 
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <KeyboardAvoidingView 
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={styles.safeArea}
+    keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+>
             <LinearGradient
                 colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
                 style={styles.container}
@@ -85,7 +89,7 @@ export default function AssistantScreen({ navigation }) {
                 </ScrollView>
                 <EnterMessage onSendData={receiveMessage} />
             </LinearGradient>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
     );
 }
 
