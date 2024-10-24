@@ -28,6 +28,8 @@ export default function EnterMessage({ onSendData }) {
                 style={[styles.sendButton, !textMessage && styles.sendButtonDisabled]}
                 onPress={handleTextMessage}
                 disabled={!textMessage}
+                accessibilityRole={"button"}
+                accessibilityLabel={"Envoyer"}
             >
                 <Ionicons name="send" size={24} color={textMessage ? "#007AFF" : "#999"} />
             </TouchableOpacity>

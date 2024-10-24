@@ -28,7 +28,9 @@ export default function StepScreen({navigation}) {
             <Text style={styles.subText}>Pour l'utiliser, des informations tel que votre nom et prénom seront partagées à notre IA.</Text>
             <TouchableOpacity
              style={styles.button}
-             onPress={handlePress}>
+             onPress={handlePress}
+             accessibilityRole={"button"}
+            >
                 <Text style={styles.buttonText}>J'accepte et je poursuis</Text>
             </TouchableOpacity>
              </LinearGradient>

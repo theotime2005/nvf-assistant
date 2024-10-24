@@ -35,6 +35,7 @@ export default function WelcomeScreen({ navigation }) {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={handlePress}
+                    accessibilityRole={"button"}
                 >
                     <Text style={styles.buttonText}>Commencer l'aventure</Text>
                 </TouchableOpacity>
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     appName: {
-        fontSize: 32, 
-        fontWeight: '800', 
+        fontSize: 32,
+        fontWeight: '800',
         color: '#FFF',
         marginBottom: 40,
     },
