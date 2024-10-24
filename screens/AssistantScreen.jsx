@@ -58,7 +58,7 @@ export default function AssistantScreen({ navigation }) {
                 colors={['#A3C1DA', '#B0E0E6', '#87CEFA']}
                 style={styles.container}
             >
-                <Text style={styles.title}>Assistant Nouvelles Frontières</Text>
+                <Text style={styles.title}>Assistant Izzy</Text>
                 <ScrollView
                     style={styles.messagesContainer}
                     ref={scrollViewRef}
@@ -67,9 +67,15 @@ export default function AssistantScreen({ navigation }) {
                     {messages.map((message, index) => (
                         <View key={index} style={message.type === "user" ? styles.userMessage : styles.assistantMessage}>
                             {message.type === "user" ? (
-                                <Text style={styles.messageText}>{message.text}</Text>
+                                <>
+                                    <Text style={styles.userPrefix}>Vous avez dit:</Text>
+                                    <Text style={styles.messageText}>{message.text}</Text>
+                                </>
                             ) : (
-                                <AssistantAnswer answer={message.text} />
+                                <>
+                                    <Text style={styles.assistantPrefix}>Izzy a dit :</Text>
+                                    <AssistantAnswer answer={message.text} />
+                                </>
                             )}
                         </View>
                     ))}
@@ -116,6 +122,18 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         maxWidth: '80%',
+    },
+    userPrefix: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#1e90ff', // Bleu clair pour "Vous avez dit"
+        marginBottom: 4,
+    },
+    assistantPrefix: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#32cd32', // Vert pour "L'assistant a dit"
+        marginBottom: 4,
     },
     messageText: {
         color: '#ffffff',
