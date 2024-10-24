@@ -1,4 +1,3 @@
-import EnterMessage from "../components/EnterMessage";
 import { Audio } from 'expo-av';
 import React, { useState, useRef } from "react";
 import { ActivityIndicator, Text, View, StyleSheet, ScrollView, SafeAreaView, Vibration } from "react-native";
